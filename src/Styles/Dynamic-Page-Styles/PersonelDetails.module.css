@@ -138,4 +138,28 @@
   .Details_Page {
     width: 100%;
   }
+}
+@media only screen and (max-width: 500px) {
+  .Details_Page .Header .Mini_Logo__Name_Box {
+    left: 10px;
+  }
+  .Details_Page .Header .Mini_Logo__Name_Box .Logo_Container {
+    height: 130px;
+    width: 130px;
+  }
+  .Details_Page .Header .Mini_Logo__Name_Box .Large_Text {
+    font-size: 22px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .Details_Page .Header .Mini_Logo__Name_Box .Logo_Container {
+    height: 100px;
+    width: 100px;
+  }
+  .Details_Page .Header .Mini_Logo__Name_Box .Large_Text {
+    font-size: 18px;
+  }
+  .Details_Page .Header .Mini_Logo__Name_Box .Small_Text {
+    font-size: 15px;
+  }
 }/*# sourceMappingURL=PersonelDetails.module.css.map */
