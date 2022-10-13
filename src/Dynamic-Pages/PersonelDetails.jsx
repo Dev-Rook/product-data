@@ -64,17 +64,17 @@ const PersonelDetails = () => {
       <div className={Styles.Body}>
         <div className={Styles.Social_Icons_Container}>
           <div className={Styles.Social_Icon}>
-            <a href={"https://github.com/Dev-Rook"} rel="">
+            <a href={"https://github.com/Dev-Rook"} rel="noreferrer" target={"_blank"}>
               <GitHubIcon sx={{ color: "white", fontSize: 30 }} />
             </a>
           </div>
           <div className={Styles.Social_Icon}>
-            <a href="https://www.linkedin.com/in/dev-rook/" rel="">
+            <a href="https://www.linkedin.com/in/dev-rook/"  rel="noreferrer" target={"_blank"}>
               <LinkedInIcon sx={{ color: "#70b5f9", fontSize: 30 }} />
             </a>
           </div>
           <div className={Styles.Social_Icon}>
-            <a href="https://devrook.vercel.app/" rel="">
+            <a href="https://devrook.vercel.app/"  rel="noreferrer" target={"_blank"}>
               <LanguageIcon sx={{ color: "#e3b261", fontSize: 30 }} />
             </a>
           </div>
