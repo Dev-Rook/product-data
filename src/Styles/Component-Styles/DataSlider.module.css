@@ -15,6 +15,10 @@
   font-size: 30px;
   font-weight: 300;
 }
+.Slider_Container .Swiper {
+  display: flex;
+  width: 100%;
+}
 .Slider_Container .Swiper .Card {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border: 2px solid black;
