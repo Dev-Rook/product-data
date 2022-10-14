@@ -21,13 +21,17 @@ const PersonelDetails = () => {
 
   const [details, setDetials] = useState({});
 
-  const url = `https://random-data-api.com/api/v2/users?${id}&is_xml=true`;
+  const url = `https://fakestoreapi.com/products/${id}`;
 
-  const getPersonelData = useCallback(() => {
-    axios.get(url).then((result) => {
-      setDetials(result.data);
-      console.table(result.data);
-    });
+
+  const getPersonelData = useCallback(async () => {
+    try {
+      const request = await axios.get(url);
+      console.log(request);
+      setDetials(request.data);
+    } catch (err) {
+      console.log(err);
+    }
   }, [url]);
 
   useEffect(() => {
@@ -44,20 +48,20 @@ const PersonelDetails = () => {
       </Link>
       <div className={Styles.Header}>
         <div className={Styles.Header_Image_Container}>
-          <img src={details.avatar} alt="" className={Styles.Header_Image} />
+          <img src={details?.image} alt="" className={Styles.Header_Image} />
         </div>
         <div className={Styles.Mini_Logo__Name_Box}>
           <div className={Styles.Logo_Container}>
-            <img src={details.avatar} alt="" className={Styles.Logo} />
+            <img src={details?.image} alt="" className={Styles.Logo} />
           </div>
 
           <h3 className={Styles.Large_Text}>
-            {details.first_name}
+            {details.id}
             &nbsp;
-            {details?.last_name}
+            <br />
+            {details?.category}
           </h3>
 
-          <p className={Styles.Small_Text}>{details?.username}</p>
         </div>
       </div>
 
@@ -81,14 +85,13 @@ const PersonelDetails = () => {
         </div>
         <div className={Styles.Information_Box}>
           <p className={Styles.Intro_Text}>
-            Hello there! My name is {details?.first_name}. I am a{" "}
-            {details?.employment?.title} with my skill being{" "}
-            {details?.employment?.key_skill}. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Voluptatibus amet aspernatur deleniti
-            praesentium, ea optio veniam ratione dolor quo? Exercitationem?
+            {details.title}
+          </p>
+          <p className={Styles.Intro_Text}>
+            {details.description}
           </p>
 
-          <div className={Styles.Info_Icon_Container}>
+          {/* <div className={Styles.Info_Icon_Container}>
             <div className={Styles.Info_Item}>
               <MapIcon sx={{ color: "white", fontSize: 30 }} />
               <p>{details?.address?.state}</p>
@@ -109,7 +112,7 @@ const PersonelDetails = () => {
               <DateRangeIcon sx={{ color: "white", fontSize: 30 }} />
               <p>{details?.date_of_birth}</p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <DataSlider />

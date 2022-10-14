@@ -18,22 +18,49 @@ import "swiper/css/scrollbar";
 const DataSlider = () => {
   const [data, setData] = useState([]);
 
-  const url = `https://random-data-api.com/api/v2/users?size=20&is_xml=true`;
+  const url = `https://fakestoreapi.com/products/category/electronics`;
 
-  const getPersonelData = useCallback( () => {
-    axios.get(url).then((result) => {
-      setData(result.data);
-      console.table(result.data);
-    });
-  }, []);
-  
+  const getPersonelData = useCallback(async () => {
+    try {
+      const request = await axios.get(url);
+      console.log(request);
+      setData(request.data);
+    } catch (err) {
+      console.log(err)
+    }
+  }, [url]);
+
   useEffect(() => {
     getPersonelData();
-  }, []);
+  }, [getPersonelData]);
+
+
+
+
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", () => {
+  //     if (window.scrollY > 100) {
+  //       setBackToTop(true);
+  //     } else {
+  //       setBackToTop(false);
+  //     }
+  //   });
+  // }, []);
+
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+
+
 
   return (
     <div className={Styles.Slider_Container}>
-      <h3 className={Styles.Slider_Title}>Personel</h3>
+      <h3 className={Styles.Slider_Title}>Product</h3>
 
       <Swiper
         speed={800}
@@ -81,19 +108,19 @@ const DataSlider = () => {
           data.map((value) => {
             return (
               <SwiperSlide className={Styles.Slide} key={value.id}>
-                <Link to={"/Personel/" + value.id}>
+                <Link onClick={scrollUp} to={"/Personel/" + value.id}>
                   <div className={Styles.Card}>
                     <div className={Styles.Header}>
                       <div className={Styles.Avatar_Container}>
                         <img
-                          src={value.avatar}
+                          src={value.image}
                           alt=""
                           className={Styles.Avatar}
                         />
                       </div>
 
                       <div className={Styles.Header_Information_Box}>
-                        <h3 className={Styles.Large_Text}>
+                        {/* <h3 className={Styles.Large_Text}>
                           {value.first_name}
                           &nbsp;
                           {value.last_name}
@@ -101,10 +128,7 @@ const DataSlider = () => {
 
                         <p className={Styles.Small_Text}>
                           {value?.address?.state}
-                        </p>
-                        <p className={Styles.Small_Text}>
-                          {value?.social_insurance_number}
-                        </p>
+                        </p> */}
                       </div>
                     </div>
 
@@ -117,17 +141,12 @@ const DataSlider = () => {
                       <p className={Styles.Small_Text}>
                         <span>Title:</span>
                         &nbsp;
-                        {value?.employment?.title}
+                        {value?.title}
                       </p>
                       <p className={Styles.Small_Text}>
-                        <span>Skill:</span>
+                        <span>Category:</span>
                         &nbsp;
-                        {value?.employment?.key_skill}
-                      </p>
-                      <p className={Styles.Small_Text}>
-                        <span>Gender:</span>
-                        &nbsp;
-                        {value?.gender}
+                        {value?.category}
                       </p>
                     </div>
                   </div>
