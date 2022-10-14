@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Styles from "../Styles/Component-Styles/DataSlider.module.css";
 
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import GitHubIcon from "@mui/icons-material/GitHub";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, FreeMode, Autoplay, Mousewheel } from "swiper";
@@ -26,17 +29,13 @@ const DataSlider = () => {
       console.log(request);
       setData(request.data);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }, [url]);
 
   useEffect(() => {
     getPersonelData();
   }, [getPersonelData]);
-
-
-
-
 
   // useEffect(() => {
   //   window.addEventListener("scroll", () => {
@@ -54,9 +53,6 @@ const DataSlider = () => {
       behavior: "smooth",
     });
   };
-
-
-
 
   return (
     <div className={Styles.Slider_Container}>
