@@ -21,7 +21,7 @@ import "swiper/css/scrollbar";
 const DataSlider = () => {
   const [data, setData] = useState([]);
 
-  const url = `https://fakestoreapi.com/products/category/electronics`;
+  const url = `https://fakestoreapi.com/products?sort=asc`;
 
   const getPersonelData = useCallback(async () => {
     try {
